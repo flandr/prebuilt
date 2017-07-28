@@ -37,14 +37,14 @@ fi
 ARCHS=("arm64"    "armv7s"   "armv7"    "i386"            "x86_64"             "x86_64")
 SDKS=( "iphoneos" "iphoneos" "iphoneos" "iphonesimulator" "iphonesimulator8.0" "macosx")
 #                                                                              macosx10.9
-LIB_NAME="openssl-1.0.1h"
+LIB_NAME="openssl-1.0.2l"
 TEMP_DIR=$(pwd)/.build
 TEMP_LIB_PATH="${TEMP_DIR}/${LIB_NAME}"
 HEADER_DEST_DIR="include"
 
 if ! [ -f "${LIB_NAME}.tar.gz" ]; then
   echo "Missing ${LIB_NAME}.tar.gz — Remedy:" >&2
-  echo "  (cd '$(pwd)' && wget https://www.openssl.org/source/openssl-1.0.1h.tar.gz && $0)" >&2
+  echo "  (cd '$(pwd)' && wget https://www.openssl.org/source/openssl-1.0.2l.tar.gz && $0)" >&2
   exit -1
 fi
 

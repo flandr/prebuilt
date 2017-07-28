@@ -6,7 +6,8 @@ cd "$(dirname "$0")"
 # Setup architectures, library name and other vars + cleanup from previous runs
 ARCHS=("arm64"    "armv7s"   "armv7"    "i386"            "x86_64"             "x86_64")
 SDKS=( "iphoneos" "iphoneos" "iphoneos" "iphonesimulator" "iphonesimulator8.0" "macosx")
-LIB_NAME="libevent-2.1.4-alpha"
+VERSION="2.1.8-stable"
+LIB_NAME="libevent-${VERSION}"
 
 TEMP_DIR=$(mktemp -d -t libevent-ios)
 TEMP_LIB_PATH="$TEMP_DIR/${LIB_NAME}"
@@ -14,7 +15,7 @@ SELFDIR=$(pwd)
 
 if ! [ -f "${LIB_NAME}.tar.gz" ]; then
   echo "Missing ${LIB_NAME}.tar.gz — Remedy:" >&2
-  echo "  wget -O ${LIB_NAME}.tar.gz https://sourceforge.net/projects/levent/files/libevent/libevent-2.1/${LIB_NAME}.tar.gz/download" >&2
+  echo "  wget -O ${LIB_NAME}.tar.gz https://github.com/libevent/libevent/releases/download/release-${VERSION}/libevent-${VERSION}.tar.gz" >&2
   exit -1
 fi
 
@@ -63,7 +64,6 @@ configure_make() {
     --enable-static \
     --disable-debug-mode \
     --disable-dependency-tracking \
-    --disable-thread-support \
     ${HOST_FLAG} \
     --prefix="${DSTDIR}" \
     CC="${GCC} " \
@@ -122,7 +122,7 @@ create_lib_for_sdks() {
 
 mkdir -p lib-ios lib-osx
 
-LIBS=("event" "event_core" "event_extra" "event_openssl") # event_pthreads if building w/ threads
+LIBS=("event" "event_core" "event_extra" "event_openssl" "event_pthreads")
 for ((i=0; i < ${#LIBS[@]}; i++)); do
   LIB=${LIBS[i]}
   create_lib_for_sdks  lib-ios/lib${LIB}.a  lib/lib${LIB}.a  iphoneos iphonesimulator iphonesimulator8.0
