@@ -55,19 +55,17 @@ $(BUILDDIR)/include/leveldb:
 clean:
 	rm -rf "$(BUILDDIR)/include/openssl" \
 	       "$(BUILDDIR)/include/event2" \
-	       "$(BUILDDIR)/include/leveldb" \
 	       "$(BUILDDIR)/lib/libssl.a" \
 	       "$(BUILDDIR)/lib/libcrypto.a" \
 	       "$(BUILDDIR)/lib/libevent.a" \
 	       "$(BUILDDIR)/lib/libevent_core.a" \
 	       "$(BUILDDIR)/lib/libevent_extra.a" \
 	       "$(BUILDDIR)/lib/libevent_openssl.a" \
-	       "$(BUILDDIR)/lib/libleveldb.a"
+	       "$(BUILDDIR)/lib/libevent_pthreads.a"
 
 rebuild:
 	rm -rf lib-* include-* .build*
 	./build-openssl.sh
 	./build-libevent.sh
-	./build-leveldb.sh
 
 .PHONY: all pre clean rebuild
