@@ -20,7 +20,7 @@
 /* #undef EVENT__DISABLE_MM_REPLACEMENT */
 
 /* Define if libevent should not be compiled with thread support */
-#define EVENT__DISABLE_THREAD_SUPPORT 1
+/* #undef EVENT__DISABLE_THREAD_SUPPORT */
 
 /* Define to 1 if you have the `accept4' function. */
 /* #undef EVENT__HAVE_ACCEPT4 */
@@ -35,7 +35,7 @@
 #define EVENT__HAVE_ARPA_INET_H 1
 
 /* Define to 1 if you have the `clock_gettime' function. */
-/* #undef EVENT__HAVE_CLOCK_GETTIME */
+#define EVENT__HAVE_CLOCK_GETTIME 1
 
 /* Define to 1 if you have the declaration of `CTL_KERN', and to 0 if you
    don't. */
@@ -67,6 +67,12 @@
 
 /* Define to 1 if you have the `epoll_ctl' function. */
 /* #undef EVENT__HAVE_EPOLL_CTL */
+
+/* Define to 1 if you have the <errno.h> header file. */
+#define EVENT__HAVE_ERRNO_H 1
+
+/* Define to 1 if you have ERR_remove_thread_stat(). */
+#define EVENT__HAVE_ERR_REMOVE_THREAD_STATE 1
 
 /* Define to 1 if you have the `eventfd' function. */
 /* #undef EVENT__HAVE_EVENTFD */
@@ -114,7 +120,7 @@
 #define EVENT__HAVE_GETPROTOBYNUMBER 1
 
 /* Define to 1 if you have the `getservbyname' function. */
-/* #undef EVENT__HAVE_GETSERVBYNAME */
+#define EVENT__HAVE_GETSERVBYNAME 1
 
 /* Define to 1 if you have the `gettimeofday' function. */
 #define EVENT__HAVE_GETTIMEOFDAY 1
@@ -192,7 +198,7 @@
 /* #undef EVENT__HAVE_PTHREAD */
 
 /* Define if we have pthreads on this system */
-/* #undef EVENT__HAVE_PTHREADS */
+#define EVENT__HAVE_PTHREADS 1
 
 /* Define to 1 if you have the `putenv' function. */
 #define EVENT__HAVE_PUTENV 1
@@ -395,21 +401,20 @@
 /* Define to 1 if you have the `vasprintf' function. */
 #define EVENT__HAVE_VASPRINTF 1
 
+/* Define if waitpid() supports WNOWAIT */
+/* #undef EVENT__HAVE_WAITPID_WITH_WNOWAIT */
+
 /* Define if kqueue works correctly with pipes */
 #define EVENT__HAVE_WORKING_KQUEUE 1
 
 /* Define to 1 if you have the <zlib.h> header file. */
 #define EVENT__HAVE_ZLIB_H 1
 
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
 #define EVENT__LT_OBJDIR ".libs/"
 
-/* Define to 1 if your C compiler doesn't accept -c and -o together. */
-/* #undef EVENT__NO_MINUS_C_MINUS_O */
-
 /* Numeric representation of the version */
-#define EVENT__NUMERIC_VERSION 0x02010400
+#define EVENT__NUMERIC_VERSION 0x02010800
 
 /* Name of package */
 #define EVENT__PACKAGE "libevent"
@@ -421,7 +426,7 @@
 #define EVENT__PACKAGE_NAME "libevent"
 
 /* Define to the full name and version of this package. */
-#define EVENT__PACKAGE_STRING "libevent 2.1.4-alpha"
+#define EVENT__PACKAGE_STRING "libevent 2.1.8-stable"
 
 /* Define to the one symbol short name of this package. */
 #define EVENT__PACKAGE_TARNAME "libevent"
@@ -430,7 +435,7 @@
 #define EVENT__PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define EVENT__PACKAGE_VERSION "2.1.4-alpha"
+#define EVENT__PACKAGE_VERSION "2.1.8-stable"
 
 /* Define to necessary symbol if this constant uses a non-standard name on
    your system. */
@@ -449,7 +454,7 @@
 #define EVENT__SIZEOF_OFF_T 8
 
 /* The size of `pthread_t', as computed by sizeof. */
-/* #undef EVENT__SIZEOF_PTHREAD_T */
+#define EVENT__SIZEOF_PTHREAD_T 8
 
 /* The size of `short', as computed by sizeof. */
 #define EVENT__SIZEOF_SHORT 2
@@ -489,7 +494,7 @@
 
 
 /* Version number of package */
-#define EVENT__VERSION "2.1.4-alpha"
+#define EVENT__VERSION "2.1.8-stable"
 
 /* Enable large inode numbers on Mac OS X 10.5.  */
 #ifndef EVENT___DARWIN_USE_64_BIT_INODE
